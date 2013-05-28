@@ -378,6 +378,12 @@ public class DragSortController extends SimpleFloatViewManager implements View.O
     @Override
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
 
+        // NUVO START: On some devices, e1 can be null at first
+        if (e1 == null) {
+            e1 = e2;
+        }
+        // NUVO END:
+
         final int x1 = (int) e1.getX();
         final int y1 = (int) e1.getY();
         final int x2 = (int) e2.getX();
